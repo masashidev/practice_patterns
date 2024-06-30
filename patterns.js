@@ -73,6 +73,18 @@ window.width
 window.height
 
 
+obj.next = newObj
+obj.previous = obj2
+const next = obj.next
+const nextNext = obj.next.next
+
+const array = [obj1, obj2, obj3, array[0], array[1], array[2]
+
+const array = [obj1, obj2, obj3]
+array.push(array[0])
+
+
+
 ////////////////////////////////////////////////////////////////////////////////
 
 arrays = [
@@ -634,6 +646,42 @@ class Tree {
   }
 }
 
+class AlphabeticTree {
+  constructor(){
+    this.root = {a: null, b: null, c: null, d: null, e: null, f: null, g: null, h: null, i: null, j: null, k: null, l: null, m: null, n: null, o: null, p: null, q: null, r: null, s: null, t: null, u: null, v: null, w: null, x: null, y: null, z: null}
+  }
+  insert(word){
+    let currentNode = this.root
+    for(let i = 0; i < word.length; i++){
+      if(!currentNode[word[i]]){
+        currentNode[word[i]] = {}
+      }
+      currentNode = currentNode[word[i]]
+    }
+  }
+}
+
+class Obj {
+  constructor(){
+    this.property = value
+    this.property2 = value2
+  }
+  get property(){
+    return this.property
+  }
+  get computedProperty(){
+    return this.property + this.property2
+  }
+  set property(newValue){
+    this.property = newValue
+  }
+  set computedProperty(newValue){
+    const ratio = this.property / this.property2
+    this.property = newValue * ratio
+    this.property2 = newValue / ratio
+}
+
+
 
 /////////////////////// algorithm ///////////////////////
 
@@ -684,6 +732,6 @@ function twoLinesCrossed(line1, line2){
   }
   const x = (b2 - b1) / (a1 - a2) // x-coordinate of intersection
   const y = a1 * x + b1 // y-coordinate of intersection
-  return x >= Math.min(x1, x2) && x <= Math.max(x1, x2) && x >= Math.min(x3, x4) && x <= Math.max(x3, x4)
+  return x >= Math.min(x1, x2) && x <= Math.max(x1, x2) && x >= Math.min(x3, x4) && x <= Math.max(x3, x4) // check if intersection is on both lines　
 
 }
