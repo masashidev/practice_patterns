@@ -532,6 +532,107 @@ const graph = {
 
 graph[1].push(5)
 graph[5].push(1)
+randomIndex = Math.floor(Math.random() * array.length)
+const connectedTo = graph[randomIndex]
+randomIndex = Math.floor(Math.random() * connectedTo.length)
+const randomNode = connectedTo[randomIndex]
+
+function traverseGraphRandomlyUntilReachingNode(node){
+  let currentNode = 1
+  const visited = new Set()
+  const sequence = []
+  while(currentNode !== node){
+    const connectedTo = graph[currentNode]
+    const randomIndex = Math.floor(Math.random() * connectedTo.length)
+    currentNode = connectedTo[randomIndex]
+    visited.add(currentNode)
+    sequence.push(currentNode)
+  }
+}
+
+
+const weightedGraph = {
+  1: [{node: 2, weight: 10}, {node: 3, weight: 20}, {node: 4, weight: 30}],
+  2: [{node: 1, weight: 10}, {node: 3, weight: 20}, {node: 5, weight: 30}],
+  3: [{node: 1, weight: 20}, {node: 2, weight: 20}, {node: 4, weight: 10}],
+  4: [{node: 1, weight: 30}, {node: 3, weight: 10}, {node: 5, weight: 20}],
+  5: [{node: 2, weight: 30}, {node: 4, weight: 20}]
+}
+
+const matrix = [
+  [0, 10, 20, 30, 0],
+  [10, 0, 20, 0, 30],
+  [20, 20, 0, 10, 0],
+  [30, 0, 10, 0, 20],
+  [0, 30, 0, 20, 0]
+]
+
+const adjacencyMatrix = [
+  [0, 1, 1, 1, 0],
+  [1, 0, 1, 0, 1],
+  [1, 1, 0, 1, 0],
+  [1, 0, 1, 0, 1],
+  [0, 1, 0, 1, 0]
+]
+
+const adjacencyList = {
+  1: [2,3,4],
+  2: [1,3,5],
+  3: [1,2,4],
+  4: [1,3,5],
+  5: [2,4]
+}
+
+
+class Node {
+  constructor(value){
+    this.value = value
+    this.left = null
+    this.right = null
+  }
+}
+
+class Tree {
+  constructor(){
+    this.root = null
+  }
+  insert(value){
+    const newNode = new Node(value)
+    if(!this.root){
+      this.root = newNode
+    } else {
+      let currentNode = this.root
+      while(true){
+        if(value < currentNode.value){
+          if(!currentNode.left){
+            currentNode.left = newNode
+            return this
+          }
+          currentNode = currentNode.left
+        } else {
+          if(!currentNode.right){
+            currentNode.right = newNode
+            return this
+          }
+          currentNode = currentNode.right
+        }
+      }
+    }
+  }
+  search(value){
+    let currentNode = this.root
+    while(currentNode){
+      if(value === currentNode.value){
+        return currentNode
+      } else if(value < currentNode.value){
+        currentNode = currentNode.left
+      } else {
+        currentNode = currentNode.right
+      }
+    }
+    return null
+  }
+}
 
 
 /////////////////////// algorithm ///////////////////////
@@ -555,4 +656,34 @@ const binarySearch = (array, target) => {
     }
   }
   return -1
+}
+
+const bubbleSort = (array) => {
+  for(let i = 0; i < array.length; i++){
+    for(let j = 0; j < array.length - i - 1; j++){
+      if(array[j] > array[j+1]){
+        let temp = array[j]
+        array[j] = array[j+1]
+        array[j+1] = temp
+      }
+    }
+  }
+  return array
+}
+
+
+function twoLinesCrossed(line1, line2){
+  const [x1, y1, x2, y2] = line1
+  const [x3, y3, x4, y4] = line2
+  const a1 = (y2 - y1) / (x2 - x1) // slope of line1
+  const a2 = (y4 - y3) / (x4 - x3) // slope of line2
+  const b1 = y1 - a1 * x1 // y-intercept of line1
+  const b2 = y3 - a2 * x3 // y-intercept of line2
+  if(a1 === a2){ // parallel
+    return false
+  }
+  const x = (b2 - b1) / (a1 - a2) // x-coordinate of intersection
+  const y = a1 * x + b1 // y-coordinate of intersection
+  return x >= Math.min(x1, x2) && x <= Math.max(x1, x2) && x >= Math.min(x3, x4) && x <= Math.max(x3, x4)
+
 }
