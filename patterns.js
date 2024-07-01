@@ -200,6 +200,23 @@ const blob;
 const img;
 const audioData;
 
+const audioData = new AudioData()
+audioData.play()
+audioData.pause()
+audioData.stop()
+
+const blob = new Blob()
+blob.create()
+blob.delete()
+blob.upload()
+blob.download()
+
+const img = new Image()
+img.load()
+img.display()
+img.hide()
+img.update()
+
 
 
 pointer
@@ -290,7 +307,24 @@ stackFunctions.forEach(function => {
 })
 
 
+const pixel = [
+  [1,1,1,1,1],
+  [1,0,0,0,1],
+  [1,0,0,0,1],
+  [1,0,0,0,1],
+  [1,1,1,1,1],
+]
 
+const face = [
+  [1,1,1,1,1,1,1,1],
+  [1,0,0,0,0,0,0,1],
+  [1,0,1,0,0,1,0,1],
+  [1,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,0,1],
+  [1,0,1,1,1,1,0,1],
+  [1,0,0,0,0,0,0,1],
+  [1,1,1,1,1,1,1,1],
+]
 
 ///////////////////////////// function //////////////////////////
 function
