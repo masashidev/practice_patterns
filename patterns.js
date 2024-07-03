@@ -351,6 +351,37 @@ return function
 return functions
 
 
+loop(){
+  if(timestamp - startTime > interval){
+    newValue = updateValue(oldValue);
+    startTime = timestamp;
+  }
+}
+updateValue(oldValue){
+  newValue = convertValue(oldValue);
+  if(checkCondition(newValue)){
+    outsideFunction();
+  }
+  return newValue;
+}
+outsideFunction(){
+  externalValue = move();
+  anotherVariable = newState();
+}
+
+let musicSheet = [];
+let numberOfLoops = 0;
+let listenerState = 'active';
+let currentLevelOfHierarchy = 0;
+let totalNumberOfNotes = 0;
+let sectionNumber = 0;
+loop(){
+  musicSheet = updateMusicSheet(musicSheet);
+  playMusic(musicSheet);
+
+}
+
+
 
 //////////////////////////  condition //////////////////////////
 if(variable === 'value')
