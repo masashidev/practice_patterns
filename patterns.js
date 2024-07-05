@@ -279,6 +279,18 @@ class Object{
 
 }
 
+class Object {
+  constructor(){
+    this.stateList = ["active", "inactive", "pending"];
+
+    this.state = this.randomState();
+  }
+
+  randomState(){
+    return Math.random() > 0.5 ? "active" : "inactive";
+  }
+}
+
 const app = new App();
 const currentUser = new User();
 
@@ -380,6 +392,90 @@ loop(){
   playMusic(musicSheet);
 
 }
+
+
+function firstFunction (){
+  secondFunction();
+
+}
+function secondFunction (){
+  thirdFunction();
+}
+function thirdFunction (){
+  firstFunction();
+}
+
+
+typingWindow.addEventListener('input', () => {
+  if(typingWindow.value.length > 0){
+    displayText();
+  }
+
+  const text = typingWindow.value;
+  let textArray = text.split(' ');
+  let textIndex = 0;
+  const intervalId = setInterval(() => {
+    display.textContent += textArray[textIndex] + ' ';
+    textIndex++;
+    if(textIndex === textArray.length){
+      clearInterval(intervalId);
+    }
+  }, 1000)
+})
+
+let active = false;
+typingInput.addEventListener('input', () => {
+  if(!active){
+    active = true;
+    setTimeout(() => {
+      active = false;
+      display.textContent = typingInput.value;
+    }, 1000)
+  }
+})
+
+
+
+///////////// looper /////////////
+
+class Looper {
+  constructor(){
+    this.events = [];
+    this.startTime = 0;
+    this.interval = 1000;
+    this.lastTimestamp = 0;
+    this.stack = [];
+    this.queue = [];
+  }
+
+  loop(timestamp){
+    if(!this.startTime) this.startTime = timestamp;
+
+    if(timestamp - this.startTime > this.interval){
+      this.startTime = timestamp;
+      this.update();
+    }
+    if(timestamp - this.lastTimestamp > this.randomInterval){
+      this.lastTimestamp = timestamp;
+      this.updateRandomly();
+    }
+    requestAnimationFrame(this.loop);
+  }
+
+  update(){
+    this.events.forEach(event => {
+      event();
+    })
+  }
+
+  updateRandomly(){
+    let randomIndex = Math.floor(Math.random() * this.stack.length);
+    this.stack[randomIndex]();
+  }
+
+
+}
+
 
 
 
