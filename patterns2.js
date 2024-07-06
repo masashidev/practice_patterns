@@ -103,3 +103,21 @@ console.log(database.getData());
 ////////////////////////////
 
 
+const whereUserClicked = {x: 0, y: 0};
+const whereUserDraggedTo = {angle: 0, distance: 0};
+let isDragging = false;
+
+window.addEventListener('pointerdown', function(event) {
+  whereUserClicked.x = event.clientX;
+  whereUserClicked.y = event.clientY;
+  isDragging = true;
+})
+
+window.addEventListener('pointermove', function(event) {
+  if(isDragging) {
+    whereUserDraggedTo.angle = Math.atan2(event.clientY - whereUserClicked.y, event.clientX - whereUserClicked.x);
+    whereUserDraggedTo.distance = Math.sqrt(Math.pow(event.clientY - whereUserClicked.y, 2) + Math.pow(event.clientX - whereUserClicked.x, 2));
+  }
+})
+
+

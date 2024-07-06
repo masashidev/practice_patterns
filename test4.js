@@ -15,7 +15,7 @@ class List {
     this.container = document.createElement('div');
 
     this.list = document.createElement('div');
-    this.list.style.height = '200px';
+    // this.list.style.height = '200px';
     this.list.style.width = '200px';
     this.list.style.border = '1px solid black';
     this.list.style.padding = '10px';
@@ -34,11 +34,12 @@ class List {
 }
 
 class Slider {
-  constructor(discreteData, ) {
+  constructor(discreteData, unit = null,) {
     this.discreteData = discreteData;
+    this.unit = unit;
 
     this.container = document.createElement('div');
-    this.container.style.height = '200px';
+    // this.container.style.height = '200px';
     this.container.style.width = '200px';
     this.container.style.border = '1px solid black';
     this.container.style.padding = '10px';
@@ -75,8 +76,8 @@ class Slider {
   translateIntoDiscreteData() {
     const value = this.getValue();
     const numberOfElements = this.discreteData.length;
-    const discreteValue = Math.floor(value / 100 * numberOfElements);
-    return this.discreteData[discreteValue];
+    const discreteValue = Math.min(Math.floor((value) / 100 * numberOfElements), numberOfElements - 1);
+    return `${this.unit ? this.unit : ''}: ${this.discreteData[discreteValue]}`;
   }
 
 }
@@ -86,11 +87,25 @@ class Slider {
 const app = new App();
 const list = new List();
 const discreteData = ['small', 'medium', 'large'];
-const slider = new Slider(discreteData);
+const numberOfPeople = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+const places = ['inside', 'on Edge', 'outside'];
+const time = ['moment', 'one hour', 'one day', 'one week', 'one month', 'one year', 'one lifetime'];
+const movement = ['at rest', 'within reach', 'walkable', 'bikeable', 'driveable', 'flyable', 'teleportable']
+
+
+const sliders = [];
+sliders.push(new Slider(numberOfPeople, 'people'));
+sliders.push(new Slider(discreteData, 'size'));
+sliders.push(new Slider(places, 'place'));
+sliders.push(new Slider(movement, 'movement'));
+sliders.push(new Slider(time, 'time'));
 
 const variables = ['size', 'time', "space", "distance", "speed"];
 variables.forEach((variable) => {
   list.add(variable);
 })
 app.addElement(list.container);
-app.addElement(slider.container);
+
+sliders.forEach((slider) => {
+  app.addElement(slider.container);
+})
