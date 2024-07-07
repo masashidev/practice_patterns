@@ -1,6 +1,18 @@
 class App {
   constructor() {
     this.container = document.getElementById('app');
+    this.container.style.display = 'flex';
+    this.container.style.height = '100vh';
+    this.container.style.justifyContent = 'center';
+    this.container.style.alignItems = 'center';
+
+    // make children wrap
+    this.container.style.flexWrap = 'wrap';
+    // make gap between children zero
+
+    // this.container.style.gridTemplateColumns = 'repeat(auto-fill, minmax(200px, 3fr))';
+    // this.container.style.gap = 0;
+
   }
 
   addElement(elementContainer) {
@@ -15,13 +27,22 @@ class List {
     this.container = document.createElement('div');
 
     this.list = document.createElement('div');
-    // this.list.style.height = '200px';
+    // this.list.style.height = '100px';
     this.list.style.width = '200px';
     this.list.style.border = '1px solid black';
     this.list.style.padding = '10px';
     this.list.style.backgroundColor = 'lightgray';
 
+    this.list.style.position = 'absolute';
+    this.list.style.top = '0';
+
     this.container.appendChild(this.list);
+
+    this.background = document.createElement('div');
+    this.background.style.height = '100px';
+    this.background.style.width = '200px';
+
+    this.container.appendChild(this.background);
 
   }
 

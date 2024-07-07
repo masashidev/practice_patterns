@@ -1,0 +1,42 @@
+html {
+  background-color: #acacac;
+  padding: 0;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+
+}
+
+document {
+  background-color: #383838;
+  padding: 0;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #383838;
+  padding: 0;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  /* wrap */
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+input[type="text"] {
+  background-color: #383838;
+  color: #acacac;
+  border: 1px solid #acacac;
+  padding: 5px;
+  margin: 0px;
+
+  width: 100px;
+  height: 20px;
+}
