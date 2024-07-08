@@ -21,13 +21,20 @@ body {
 }
 
 #app {
-  width: 100vw;
+  width: 350px;
   height: 100vh;
+
+  /* center */
+  margin: 0 auto;
+
   display: flex;
   /* wrap */
-  justify-content: space-evenly;
-  align-items: center;
+  justify-content: center;
+  /* align-items: center; */
+  align-content:center;
   flex-wrap: wrap;
+
+
 }
 
 input[type="text"] {
@@ -37,6 +44,6 @@ input[type="text"] {
   padding: 5px;
   margin: 0px;
 
-  width: 100px;
-  height: 20px;
+  width: 50px;
+  height: 50px;
 }
