@@ -1,0 +1,58 @@
+html, document, body {
+  background-color: #383838;
+  padding: 0;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+#app {
+  width: 100vb;
+  height: 100vh;
+}
+
+#header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+
+  width: 100vw;
+  height: 10vh;
+  background-color: #acacac;
+}
+
+#footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+
+  height: 10vh;
+  background-color: #acacac;
+}
+
+#content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 10vh;
+  bottom: 10vh;
+  left: 0;
+  right: 0;
+
+  background-color: #383838;
+}
+
+#flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.
