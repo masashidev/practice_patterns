@@ -82,6 +82,14 @@ const center = {
   y: windowSize.height / 2
 };
 }
+
+const element = document.getElementById('app');
+const element = document.querySelector('#app');
+const element = document.querySelectorAll('.app');
+const listElements = document.querySelectorAll('li > ul');
+const allParagraph = document.querySelectorAll('p');
+
+
 const windowRatio = () => windowSize.width / windowSize.height;
 const isLandscape = () => windowRatio() > 1;
 const isPortrait = () => windowRatio() < 1;
@@ -104,10 +112,63 @@ const requestedPage = (method, url, id) => {
   return fetch(requestedPage.url)
 }
 
+const word = {
+  definition: 'a single distinct meaningful element of speech or writing, used with others (or sometimes alone) to form a sentence and typically shown with a space on either side when written or printed.',
+  synonyms: ['term', 'name', 'expression', 'designation', 'locution', 'turn of phrase', 'idiom', 'set phrase', 'word group', 'word combination', 'group of words', 'collocation', 'formula', 'formulation', 'verbalism', 'vocabulary item', 'lexical item', 'terminology', 'nomenclature', 'jargon', 'argot', 'cant', 'patois', 'slang', 'vernacular', 'patter', 'patois', 'slang', 'vernacular', 'patter'],
+  antonyms: ['silence', 'quiet'],
+  partOfSpeech: 'noun',
+  syllables: 1,
+  pronunciation: 'wərd',
+  examples: ['a word of advice', 'the word "hut" is monosyllabic', 'I just want a word with you'],
+  wordForms: ['words', 'worded', 'wording'],
+  wordOrigin: 'Old English; of Germanic origin, from an Indo-European root shared by Latin verbum "word"',
+  wordLength: 4,
+  wordFrequency: 10000,
+  wordRank: 1,
+  wordFrequencyRank: 1,
+  wordRankByFrequency: 1,
+  wordRankByLength: 1,
+  connectedFrom: ['a', 'the', ]
+  connectedTo: ['']
+}
+
+
+
 
 class User {
 }
 class Product {
+}
+class Element {
+  constructor(value){
+    this.value = value;
+    this.animationID = null;
+    this.dom = null;
+    this.instantiateDOM();
+  }
+
+  instantiateDOM(){
+    this.dom = document.createElement('div');
+    this.dom.innerHTML = this.value;
+    document.body.appendChild(this.dom);
+  }
+
+  animateShake(){
+    const duration = 1000;
+    const animationID = requestAnimationFrame(() => {
+      const start = performance.now();
+      const shake = (timestamp) => {
+        const elapsed = timestamp - start;
+        if (elapsed < duration) {
+          this.dom.style.transform = `translate(${Math.sin(elapsed / 100) * 10}px, 0)`;
+          requestAnimationFrame(shake);
+        } else {
+          this.dom.style.transform = 'translate(0, 0)';
+        }
+      }
+      requestAnimationFrame(shake);
+    })
+  }
 }
 
 const obj1 ={
@@ -232,7 +293,28 @@ set.has('value');
 set.delete('value');
 set.clear();
 
+const inputArray = document.querySelectorAll('input');
+const inputObject = inputArray.map((input) => {
+  input.id: input.value
+});
 
+
+function action() {
+  if(possible) {
+    doSomething();
+  }
+}
+function attemptAction(){
+  if(valid){
+    doSomething();
+  }
+}
+function tenSecondLater(){
+  setTimeout(() => {
+    doSomething();
+  }, 10000);
+  return 'done';
+}
 
 
 function handleAddButtonClicked() {
@@ -304,9 +386,58 @@ function requestFile() {
   input.click();
 }
 
+
+
 addButton.addEventListener('click', function() {
   handleAddButtonClicked();
-}
+})
 deleteButton.addEventListener('click', function() {
   handleDeleteButtonClicked();
+})
+draggableObject.addEventListener('pointerdown', (e) => {
+  draggableObject.style.position = 'absolute';
+  draggableObject.style.left = e.clientX + 'px';
+  draggableObject.style.top = e.clientY + 'px';
+  isDragging = true;
+
+  draggableObject.addEventListener('pointermove', (e) => {
+    if (isDragging) {
+      draggableObject.style.left = e.clientX + 'px';
+      draggableObject.style.top = e.clientY + 'px';
+    }
+
+    draggableObject.addEventListener('pointerup', () => {
+      isDragging = false;
+
+      draggableObject.style.position = 'static';
+
+    });
+  });
+});
+
+
+if (elapsed < duration) {
+  this.animationID = requestAnimationFrame(shake);
+} else {
+  this.dom.style.transform = 'translate(0, 0)';
+  this.animationID = null;
 }
+if(this.animationID){
+  cancelAnimationFrame(this.animationID);
+  this.animationID = null;
+}
+if( i === j ){
+  grid[i][j] = "diagonal";
+}
+
+for(let i = 0; i < 10; i++){
+  console.log(i);
+}
+element.id = i;
+element.x = container.x + i * elemnetSize;
+
+
+
+elapsed = timestamp - start;
+duration = 1000;
+timePassedPercentage = elapsed / duration;
