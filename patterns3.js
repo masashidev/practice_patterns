@@ -110,6 +110,131 @@ class User {
 class Product {
 }
 
+const obj1 ={
+  key: 'value'
+}
+const obj2 = new Object();
+obj2.key = 'value';
+const obj3 = Object.create(null);
+obj3.key = 'value';
+
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+const obj4 = new Person('John', 30);
+
+Object.defineProperties(obj1, {
+  key: {
+    value: 'value',
+    writable: true,
+    enumerable: true,
+    configurable: true
+  },
+  key2: {
+    value: 'value2',
+    writable: true,
+    enumerable: true,
+    configurable: true
+  }
+});
+
+const keyName = 'key';
+obj1[keyName] = 'value';
+
+class Element {
+  constructor(value, parent, children) {
+    this.value = value;
+    this.parent = parent;
+    this.children = children;
+  }
+}
+const node1 = new Element("1", null, []);
+const node2 = new Element("2", node1, []);
+const node3 = new Element("3", node1, []);
+const node4 = new Element("4", node1, [node2, node3]);
+node1.children.push(node2, node3);
+
+const elements = [node1, node2, node3];
+
+console.log(node1.children[0].value);
+
+const connections = [
+  [node1, node2],
+  [node1, node3],
+  [node1, node4],
+  [node2, node3],
+  [node2, node4],
+  [node3, node4],
+];
+const nodeValues2 = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+const totalNodes = 10;
+const connectionsPatterns = [
+  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+]
+const connectionWeight = [
+  [10, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [10, 20, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 5, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 10, 10, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 10, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 10, 10, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 10, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 10, 10, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 10, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 10, 10],
+]
+
+connectionsPatterns.forEach((pattern, index) => {
+  const children = [];
+  pattern.forEach((connection, index2) => {
+    if (connection === 1) {
+      children.push(elements[index2]);
+    }
+  });
+  const node = new Element(nodeValues2[index], null, children);
+});
+
+
+const sequencesOfCharacters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+sequencesOfCharacters.map((character) => character.toUpperCase());
+
+const newArray = [...Array(n)]
+const newArray = Array(n)
+
+const a = Array(10)
+console.log(a);
+const b = [...Array(10)]
+console.log(b);
+const c = Array.from({length: 10});
+console.log(c);
+
+const map = new Map();
+map.set('key', 'value');
+map.get('key');
+map.delete('key');
+map.clear();
+
+const set = new Set();
+set.add('value');
+set.has('value');
+set.delete('value');
+set.clear();
+
+
+
+
 function handleAddButtonClicked() {
   const user = new User();
   const product = new Product();

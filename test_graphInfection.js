@@ -33,6 +33,7 @@ class Node {
     this.children = [];
 
     this.dom = document.createElement('div');
+
     this.dom.style.height = '30px';
     this.dom.style.width = '30px';
     this.dom.style.border = '1px solid black';
@@ -45,7 +46,7 @@ class Node {
     this.displayPosition = display.displayPosition();
     const initialPosition = {
       x: this.displayPosition.x + Math.floor(Math.random() * this.displayPosition.width),
-      y: this.displayPosition.y + Math.floor(Math.random() * this.displayPosition.height),
+      y: this.displayPosition.y + Math.floor(Math.random() * this.displayPosition.height)
     }
     this.x = initialPosition.x;
     this.y = initialPosition.y;
@@ -81,3 +82,4 @@ nodeValues.forEach((value) => {
 });
 
 console.log(display.displayPosition());
+

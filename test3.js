@@ -57,3 +57,4 @@ function sortByFrequency(array) {
   });
   return frequency;
 }
+
