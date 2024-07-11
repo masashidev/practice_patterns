@@ -38,7 +38,7 @@ const initialize = () => {
 
 document.addEventListener('DOMContentLoaded', () =>{
   initialize();
-  scanValues();
+  // scanValues();
 });
 
 function getInputValues() {

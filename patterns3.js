@@ -133,6 +133,23 @@ const word = {
 }
 
 
+let currentPosition = {x: 0, y: 0};
+
+const dom = document.createElement('div');
+app.appendChild(dom);
+dom.classList.add('element');
+dom.classList.add('show')
+dom.classList.remove('show')
+
+// show css dom
+dom.style.display = 'block';
+dom.style.display = 'flex';
+dom.style.display = 'inline';
+dom.style.display = 'inline-block';
+dom.style.display = 'none';
+// hide css dom
+dom.style.visibility = 'visible';
+dom.style.visibility = 'hidden';
 
 
 class User {
@@ -170,6 +187,8 @@ class Element {
     })
   }
 }
+
+
 
 const obj1 ={
   key: 'value'
@@ -293,10 +312,35 @@ set.has('value');
 set.delete('value');
 set.clear();
 
+array.map((element, index) => array[index][array[index].length - 1]);
+array.reduce((acc, ele) => acc + ele, 0);
+array.filter((ele) => ele > 0);
+array.filter((ele) => ele.state === 'active');
+array.filter((ele) => condition(ele));
+array.find((ele) => ele.id === 1);
+matrix.find((row) => row.includes('a'));
+grid.find((row) => row.every((cell) => cell === 'x'));
+array.every((ele) => ele > 0);
+
+const array = [...Array(10)].map((_, i) => Math.floor(Math.random() * 100));
+const matrix = [...Array(10)].map(() => [...Array(10)].map(() => Math.floor(Math.random() * 100)));
+const differenceBetweenFirstAndRest = array.map((ele, index) => ele - array[index]);
+
+
 const inputArray = document.querySelectorAll('input');
 const inputObject = inputArray.map((input) => {
   input.id: input.value
 });
+
+const inputSequences;
+document.addEventListener('change' () => {
+  inputSequences = document.querySelectorAll('input').map((input) => input.value);
+})
+
+const keySequences;
+document.addEventListener('keydown', (event) => {
+  keySequences.push(event.key);
+})
 
 
 function action() {
@@ -416,6 +460,7 @@ draggableObject.addEventListener('pointerdown', (e) => {
 });
 
 
+
 if (elapsed < duration) {
   this.animationID = requestAnimationFrame(shake);
 } else {
@@ -429,6 +474,12 @@ if(this.animationID){
 if( i === j ){
   grid[i][j] = "diagonal";
 }
+if( i !== j ){
+  grid[i][j] = "not diagonal";
+}
+if( left < right ){
+  grid[i][j] = "left";
+})
 
 for(let i = 0; i < 10; i++){
   console.log(i);
@@ -438,6 +489,48 @@ element.x = container.x + i * elemnetSize;
 
 
 
+
 elapsed = timestamp - start;
 duration = 1000;
 timePassedPercentage = elapsed / duration;
+
+
+displaySize = parcentageToDisplaySize * windowSize;
+centerX = windowSize.width / 2;
+displayX = centerX - displaySize / 2;
+const displayX = () => {
+  const displaySize = parcentageToDisplaySize * windowSize;
+  const centerX = windowSize.width / 2;
+  return centerX - displaySize / 2;
+}
+display.x = displayX();
+window.addEventListener('resize', () => {
+  display.x = displayX();
+})
+
+function scrollImages() {
+  const images = document.querySelectorAll('.image');
+  images.forEach((image) => {
+    image.scrollLeft += 10;
+  });
+}
+
+function openMenu() {
+  const menu = document.querySelector('.menu');
+  menu.style.display = 'block';
+}
+function closeMenu() {
+  const menu = document.querySelector('.menu');
+  menu.style.display = 'none';
+}
+
+const pagesURL = {
+  home: '/',
+  about: '/about',
+  contact: '/contact',
+  services: '/services',
+}
+
+function navigateTo(page) {
+  window.location = pagesURL[page];
+}
