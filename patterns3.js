@@ -430,6 +430,23 @@ function requestFile() {
   input.click();
 }
 
+const tag = 'div';
+const content = 'Hello World';
+const idName = 'app';
+const className = 'container';
+const html = `<${tag} id="${idName}" class="${className}">${content}</${tag}>`;
+
+function createHTMLTag(tag, content, idName, className) {
+  return `<${tag} id="${idName}" class="${className}">${content}</${tag}>`;
+}
+function createHTMLtag(tag, content, options = {}) {
+  const { id, classes } = options;
+
+  let attributes = '';
+
+  if(id) {
+    attributes += `id="${id}"`;
+
 
 
 addButton.addEventListener('click', function() {
