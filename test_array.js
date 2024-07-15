@@ -28,3 +28,13 @@ function repeatArrayTransformation(array, times) {
 }
 
 repeatArrayTransformation(test, test.length - 1);
+
+const randomWords = [ 'apple', 'banana', 'cherry', 'date', 'elderberry', 'fig', 'grape', 'honeydew', 'imbe', 'jackfruit' ];
+
+const distanceBetweenWords = (array, word1, word2) => {
+  const index1 = array.indexOf(word1);
+  const index2 = array.indexOf(word2);
+  return Math.abs(index1 - index2);
+}
+
+

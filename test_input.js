@@ -40,3 +40,21 @@ cards.addEventListener('click', (event) => {
 const typed  = document.getElementById('typed').innerHTML;
 const inputValue = document.getElementById('input').value;
 
+const inputA = document.getElementById('inputA');
+const inputB = document.getElementById('inputB');
+
+function createObject(keys, values) {
+  const obj = {};
+  keys.forEach((key, index) => {
+    obj[key] = values[index];
+  });
+  return obj;
+}
+
+const obj = {
+  [inputA.value]: inputB.value
+}
+
+const objectsList = []
+
+ 
