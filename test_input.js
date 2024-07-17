@@ -57,4 +57,29 @@ const obj = {
 
 const objectsList = []
 
- 
+
+const questionList = [
+  {
+    name: "string",
+    age: "number",
+    email: "email",
+
+  },
+  {
+    title: "string",
+    description: "string",
+    date: "date",
+    place: "string",
+  }
+]
+function setInputForm(question) {
+  const form = document.getElementById('form');
+  for(const key in question) {
+    const input = document.createElement('input');
+    input.id = key;
+    input.name = key;
+    input.placeholder = key;
+    input.type = question[key];
+    form.appendChild(input);
+  }
+}
