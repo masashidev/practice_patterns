@@ -11,13 +11,6 @@ console.log(map.has('key2'));
 
 console.log(map.size);
 
-map.delete('key3');
-
-console.log(map.size);
-
-map.clear();
-
-console.log(map.size);
 
 const map2 = new Map([
   ['key1', 'value1'],
@@ -26,5 +19,13 @@ const map2 = new Map([
 ]);
 
 console.log(map2.get('key1'));
+
+
+map.entries().forEach(([key, value]) => {
+  console.log(key, value);
+})
+map.forEach((value, key) => {
+  console.log(key, value);
+})
 
 
