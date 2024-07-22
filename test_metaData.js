@@ -115,8 +115,160 @@ const dataForGeneratingShape = {
     y: 0,
   },
   numberOfLines: 10,
-  lengthRatioDistribution: []
-
+  lengthRatioDistribution: [],
+  turnAnglesAtEachLines: [],
 
 }
+
+function lengthRatioDistribution(totalLineLength, numberOfLines, min, max) {
+  const lengthRatioDistribution = [];
+  let remainingLength = totalLineLength;
+  for(let i = 0; i < numberOfLines; i++) {
+    const length = Math.random() * (max - min) + min;
+    const ratioOverTotalLength = length / totalLineLength;
+    lengthRatioDistribution.push(ratioOverTotalLength);
+    remainingLength -= length;
+  }
+  const totalRatio = lengthRatioDistribution.reduce((total, ratio) => total + ratio, 0);
+  if(totalRatio !== 1) {
+    lengthRatioDistribution[lengthRatioDistribution.length - 1] += 1 - totalRatio;
+  }
+  return lengthRatioDistribution;
+}
+
+
+const htmlDocument = {
+  type: "object",
+  properties: {
+    doctype: {
+      type: "string",
+      value: "html",
+    },
+    head: {
+      type: "object",
+      properties: {
+        title: {
+          type: "string",
+          value: "title",
+        },
+        meta: {
+          type: "object",
+          properties: {
+            charset: {
+              type: "string",
+              value: "utf-8",
+            },
+            name: {
+              type: "string",
+              value: "viewport",
+            },
+            content: {
+              type: "string",
+              value: "width=device-width, initial-scale=1.0",
+            }
+          }
+        },
+        link: {
+          type: "object",
+          properties: {
+            rel: {
+              type: "string",
+              value: "stylesheet",
+            },
+            type: {
+              type: "string",
+              value: "text/css",
+            },
+            href: {
+              type: "string",
+              value: "styles.css",
+            }
+          }
+        }
+      }
+    },
+    body: {
+      type: "object",
+      properties: {
+        div: {
+          type: "object",
+          properties: {
+            id: {
+              type: "string",
+              value: "app",
+            },
+            style: {
+              type: "object",
+              properties: {
+                display: {
+                  type: "string",
+                  value: "flex",
+                },
+                height: {
+                  type: "string",
+                  value: "100vh",
+                },
+                justifyContent: {
+                  type: "string",
+                  value: "center",
+                },
+                alignItems: {
+                  type: "string",
+                  value: "center",
+                }
+              }
+            }
+          }
+        },
+        script: {
+          type: "object",
+          properties: {
+            src: {
+              type: "string",
+              value: "app.js",
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+const adjacencyList = [
+  [0, 0, 1, 0],
+  [0, 0, 1, 1],
+  [1, 1, 0, 1],
+  [0, 1, 1, 0],
+]
+
+const edgeWeight = [
+  [0, 0, 3, 0],
+  [0, 0, 2, 1],
+  [3, 2, 0, 1],
+  [0, 1, 1, 0],
+]
+
+const nodeValues = [10, 20, 30, 40];
+
+const nodeGroups = [
+  [0, 1],
+  [2, 3],
+]
+
+const nodeColors = ["red", "green", "blue", "yellow"];
+
+const nodePositions = [
+  {x: 0, y: 0},
+  {x: 100, y: 0},
+  {x: 0, y: 100},
+  {x: 100, y: 100},
+]
+
+const nodeSizes = [10, 20, 30, 40];
+
+const nodeShapes = ["circle", "square", "triangle", "star"];
+
+const nodeLabels = ["A", "B", "C", "D"];
+
+const nodeImages = ["image1", "image2", "image3", "image4"];
 
