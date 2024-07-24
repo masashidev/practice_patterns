@@ -116,3 +116,33 @@ const stateMachine = {
   },
 }
 stateMachine.transition("start");
+
+const stateMachine = {
+  content: 1,
+  up: () => {
+    this.content++;
+  },
+  down: () => {
+    this.content--;
+  },
+  jump: () => {
+    this.content += 10;
+  },
+}
+
+const stateMachine = {
+  data: 1,
+  change: () => {
+    switch(this.data) {
+      case 1:
+        this.data = 2;
+        break;
+      case 2:
+        this.data = 3;
+        break;
+      case 3:
+        this.data = 1;
+        break;
+    }
+  }
+}

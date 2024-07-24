@@ -272,3 +272,131 @@ const nodeLabels = ["A", "B", "C", "D"];
 
 const nodeImages = ["image1", "image2", "image3", "image4"];
 
+const arraySize = 10;
+const array = Array.from({length: arraySize}, (v, i) => i);
+
+const englishMorphemes =
+  "ad, an, ar, at, du, en, er, es, gr, ha, he, in, it, me, nd, ne, ng, nt, of, on, or, ou, ra, re, st, th, ti, to, ve, yo";
+
+const morphemesArray = englishMorphemes.split(", ");
+
+const inputChoices = {
+  range: {
+    type: "range",
+    min: 0,
+    max: 100,
+    step: 1,
+  },
+}
+
+const outputChoices = {
+  spectrum: ["red", "orange", "yellow", "green", "blue", "indigo", "violet"],
+}
+
+function getInputValue (inputChoices) {
+  const inputValue = 0;
+  inputChoices.forEach(choice => {
+    if(choice.type === "range") {
+      const min = choice.min;
+      const max = choice.max;
+      const step = choice.step;
+      inputValue = Math.floor(Math.random() * (max - min) / step) * step;
+    }
+  })
+  return inputValue;
+}
+const inputValue = getInputValue(inputChoices);
+
+
+const possibilities = ["space", "game", "story", "music", "art", "math", "science", "language", "history", "philosophy", "religion", "politics", "economics", "psychology", "sociology", "anthropology", "biology", "chemistry", "physics", "geology", "astronomy", "medicine", "engineering", "technology", "computer science", "information technology", "data science", "artificial intelligence", "machine learning", "deep learning", "neural network", "robotics", "automation", "blockchain", "cryptocurrency", "virtual reality", "augmented reality", "mixed reality", "internet of things", "smart city", "smart home", "smart grid", "smart factory", "smart farm", "smart health", "smart education", "smart transportation", "smart retail", "smart finance", "smart security", "smart defense", "smart energy", "smart environment", "smart society", "smart world", "smart universe", "smart multiverse", "smart omniverse", "smart metaverse", "smart hyperverse", "smart ultraverse", "smart xenoverse",]
+
+const twoCombinations = getTwo(possibilities);
+
+function getTwo(possibilities) {
+  const twoCombinations = [];
+  for(let i = 0; i < possibilities.length; i++) {
+    for(let j = i + 1; j < possibilities.length; j++) {
+      twoCombinations.push([possibilities[i], possibilities[j]]);
+    }
+  }
+  return twoCombinations;
+}
+
+const obj = {
+  method() {
+    return this;
+  }
+}
+
+const objMethod = obj.method;
+
+const objMethodThis = objMethod();
+
+const objMethodBind = objMethod.bind(obj);
+
+const objMethodBindThis = objMethodBind();
+
+const objMethodArrow = () => obj.method();
+
+
+const obj = {
+  data: {
+    type: "object",
+    properties: {
+      value: {
+        type: "integer",
+        value: 0,
+      }
+    }
+  },
+  method() {
+    this.data.value++;
+  }
+}
+
+const inputCode = "const input = document.createElement('input');";
+function executeCode(code) {
+  eval(code);
+}
+
+class String {
+  constructor() {
+    this.data = "";
+  }
+
+  add(string) {
+    this.data += string;
+  }
+
+  multiply(number) {
+    this.data = this.data.repeat(number);
+  }
+}
+
+const dataObjects = {}
+
+button.addEventListener('click', () => {
+  const string = getInput();
+  const stringObject = new String();
+  stringObject.add(string);
+  stringObject.multiply(3);
+  dataObjects[string] = stringObject;
+})
+
+function getInput() {
+  const input = document.getElementById('input');
+  return input.value;
+}
+
+const inputString = "<h1>hello</h1>";
+const htmlInputSanitized = sanitizeHTML(inputString);
+
+function sanitizeHTML(input) {
+  const div = document.createElement('div');
+  div.innerText = input;
+  return div.innerHTML;
+}
+
+outputDisplay.innerHTML = htmlInputSanitized;
+
+
