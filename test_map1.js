@@ -19,6 +19,7 @@ app.appendChild(slidersDisplay);
 class DataManager {
   constructor() {
     this.data = [];
+    this.sliders = [];
   }
 
   addData(data) {
@@ -27,6 +28,10 @@ class DataManager {
 
   getData() {
     return this.data;
+  }
+
+  addSlider(slider) {
+    this.sliders.push(slider);
   }
 }
 
@@ -56,9 +61,23 @@ class Slider {
     this.max = max;
     this.step = step;
     this.value = Math.floor((this.min + this.max) / 2);
+
+    this.dom = null;
+    this.createDom();
   }
 
-  render() {
+  createDom() {
+    this.dom = document.createElement('input');
+    this.dom.type = 'range';
+    this.dom.min = this.min;
+    this.dom.max = this.max;
+    this.dom.step = this.step;
+    this.dom.value = this.value;
+    this.dom.addEventListener('input', this.change);
+  }
+
+  change(e) {
+    console.log(e.target.value);
   }
 }
 
@@ -146,4 +165,13 @@ window.addEventListener("DOMContentLoaded", () => {
   // })
 })
 
- 
+addButton.addEventListener('click', () => {
+  newSliderValues = document.querySelector('#newSliderValues');
+  dataManager.sliders.push(new Slider({
+    name: newSliderValues.name,
+    min: newSliderValues.min,
+    max: newSliderValues.max,
+    step: newSliderValues.step
+  }));
+  console.log(dataManager.getData());
+})
